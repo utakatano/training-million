@@ -1,19 +1,19 @@
-import { useState } from 'react'
+import { useList } from 'million/react'
 import './App.css'
 
-export const App: React.FC = () => {
-  const [items, setItems] = useState([])
+export const App = () => {
+  const [list, delta] = useList([])
 
   return (
     <>
       <button
         onClick={() => {
-          setItems(items.concat(items.length + 1))
+          list.push(list.length + 1)
         }}
-      >Add (useState)</button>
+      >Add</button>
 
-      <ul>
-        {items.map((item) => (
+      <ul delta={delta}>
+        {list.map((item: number) => (
           <li>{item}</li>
         ))}
       </ul>
